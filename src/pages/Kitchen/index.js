@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 export const Kitchen = () => {
   const token = localStorage.getItem('token');
   const [order, setOrder] = useState([]); 
+  const [orderId, setOrderId] = useState([]); 
   const [excludedOrder, setExcludeOrder] = useState([]);
   const [amount, setAmount] = useState([]); 
-  const [id, orderId] = useState([]);
   const [productPrice, setProductPrice] = useState([]); //preco do produto
 
  useEffect(() => {
@@ -33,8 +33,10 @@ export const Kitchen = () => {
         }
       }, [])
       .then(response => response.json())
-      .then((response) => {
-        setOrder(response);
+      .then(data => {
+        const itens = data;
+        //const item = itens.filter(product => product.id.includes('itensOrdem'));
+        //setOrderId(item)
         }, [])
         .catch(error => console.log('error', error));
     }
