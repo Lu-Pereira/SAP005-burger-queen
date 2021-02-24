@@ -19,7 +19,11 @@ export const Kitchen = () => {
      .then(response => response.json())
      .then((response) => {
        setOrder(response);
+      })
+      .then(data => {
+       console.log(data)
      })
+     
      .catch(error => console.log('error', error));
     }, [])
 
@@ -33,6 +37,9 @@ export const Kitchen = () => {
         }
       }, [])
       .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
       .then(data => {
         const itens = data;
         //const item = itens.filter(product => product.id.includes('itensOrdem'));
@@ -55,7 +62,7 @@ export const Kitchen = () => {
                         <li key={ index }>
                             <p>{ product.client_name }</p>
                             <p>{ product.id }</p>
-                            <p>{ product.Products.name}</p>
+                            <p>{ product.Products}</p>
                             <button onClick={() => deleteOrder(product)}>x</button>
                         </li>
                     </div>

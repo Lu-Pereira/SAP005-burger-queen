@@ -41,6 +41,30 @@ export const Menu = () => {
     const addItems = (product) => {
         setOrderItems([...orderItems, product]);
         setProductPrice([...productPrice, product.price]);
+        const requestedProduct = orderItems.map((product) => {
+            return(
+                {
+                    id:product.id,
+                    qtd:1
+                }
+            )
+        })
+        const quantity = requestedProduct.reduce(function (a,b) {
+            a[b.id] = a[b.id] || [];
+            a[b.id].push(b);
+            return a;
+        }, Object.create(null));
+    
+        const productList = [];
+        for (const [key, value] of Object.entries(quantity)){
+            productList.push({
+                id: key,
+                qtd: value.length
+            });
+        }
+    
+        setOrder({...order, 'products': productList });
+        console.log(order);
     }
 
     const totalSum = () => {
@@ -54,33 +78,6 @@ export const Menu = () => {
     }
 
     const submitOrder = () => {
-        const requestedProduct = orderItems.map((product) => {
-            return(
-                {
-                    id:product.id,
-                    qtd:1
-                }
-            )
-        })
-
-        const quantity = requestedProduct.reduce(function (a,b) {
-            a[b.id] = a[b.id] || [];
-            a[b.id].push(b);
-            return a;
-        }, Object.create(null));
-
-        const productList = [];
-        for (const [key, value] of Object.entries(quantity)){
-            productList.push({
-                id: key,
-                qtd: value.length
-            });
-        }
-
-        setOrder({...order, 'products': productList });
-        console.log(order);
-
-
         fetch('https://lab-api-bq.herokuapp.com/orders', {
         method: 'POST',
         headers: {
@@ -91,15 +88,20 @@ export const Menu = () => {
       })
         .then((response) => {
           response.json()
+          setOrder([])
+          setOrderItems([])
+          setAmount([])
+          setProductPrice([])
+          setExcludeProduct([])
         })  
         .then(data => {
           console.log(data)
         })
-    
+        .catch(error => console.log('error', error));   
     }
     
     return(
-        <>
+        <div>
             <header>
                 <label>Nome:</label>
                 <input name='name' type='text' onChange={(e) => setOrder({...order, 'client': e.target.value})} />
@@ -222,7 +224,7 @@ export const Menu = () => {
                     <Link className="link-home" to="/">Sair</Link>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

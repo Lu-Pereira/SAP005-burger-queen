@@ -30,7 +30,7 @@ export const Login = () => {
           
         )
           .then((response) => response.json())
-          .then((data) => {
+          .then((data) => { 
             setEmail('')
             setPass('')
             console.log(data)
