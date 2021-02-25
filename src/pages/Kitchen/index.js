@@ -66,6 +66,9 @@ export const Kitchen = () => {
                 <li key={index}>
                   <p>{product.client_name}</p>
                   <p>{product.id}</p>
+                  <li>
+                    <p>{product.Products}</p>
+                  </li>
                 </li>
               </div>
             </div>
