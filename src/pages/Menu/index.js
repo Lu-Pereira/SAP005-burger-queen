@@ -92,18 +92,17 @@ export const Menu = () => {
       body: JSON.stringify(order),
     })
       .then((response) => {
-        response.json();
-        setOrder([]);
+        response.json()
+        .then((data) => console.log(data));
+        setOrder({});
         setOrderItems([]);
         setAmount([]);
         setProductPrice([]);
         setExcludeProduct([]);
-      })
-      .then((data) => {
-        console.log(data);
+        alert('Pedido criado com sucesso!')
       })
       .catch((error) => console.log("error", error));
-  };
+    };
 
   return (
     <div>
