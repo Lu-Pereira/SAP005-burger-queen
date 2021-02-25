@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import "./index.css";
+import './index.css';
 
 export const Menu = () => {
   const token = localStorage.getItem("token");
