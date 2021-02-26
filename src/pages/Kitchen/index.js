@@ -65,7 +65,14 @@ export const Kitchen = () => {
               <div className="card-container">
                 <li key={index}>
                   <p>{product.client_name}</p>
-                  <p>{product.id}</p>
+                   <p>{product.Products.map((item,index2)=>(
+                     <>
+                     <p> {item.name}</p>
+                     <p> {item.qtd}</p>
+                      
+                     </>
+                   ))}</p> 
+                  <p>{product.table}</p>
                 </li>
               </div>
             </div>
