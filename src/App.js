@@ -1,14 +1,14 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 //import { Login } from './pages/Login';
-import { Register } from './pages/Register';
-import { Kitchen } from './pages/Kitchen';
-import { Menu } from './pages/Menu';
+//import { Register } from './pages/Register';
+//import { Kitchen } from './pages/Kitchen';
+//import { Menu } from './pages/Menu';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Login from './Components/Login/Login';
 import { UserStorage } from './UserContext';
 import NotFound from './Components/NotFound';
-import Home from "./Components/Home";
+import LoginForm from "./Components/Login/LoginForm";
 
 
 export const App = () => {
@@ -16,12 +16,11 @@ export const App = () => {
   <BrowserRouter>
     <UserStorage>
       <Header />
+      <Login />
       <main className="AppBody">
         <Switch>
-          <Route path="/" element={<Home />} />
-          <Route path='/login' component={Register} />
-          <Route path='/menu' component={Menu}/>
-          <Route path='/kitchen' component={Kitchen}/>
+          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Switch>
       </main>

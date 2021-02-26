@@ -9,13 +9,22 @@
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   align-items: center;
   height: 4rem;
 }
 
 .logo {
-  padding: 0.5rem 0;
+  padding: 1rem 0;
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 25px;
+  /*background: url('../Assets/hamburguer.svg') no-repeat center center;*/
+  margin-left: 0.5rem;
+  position: relative;
+  top: -1px;
+
 }
 
 .login {

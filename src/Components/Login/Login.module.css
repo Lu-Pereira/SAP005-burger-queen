@@ -8,8 +8,8 @@
 .login::before {
   display: block;
   content: '';
-  background: url('../../Assets/login.jpg') no-repeat center center;
-  background-size: cover;
+  width: 100%;
+  background: url('../../Assets/logoburgergame.jpeg') no-repeat center;
 }
 
 .forms {

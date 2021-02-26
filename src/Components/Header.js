@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../UserContext';
+import logo from '../Assets/hamburguer.svg';
 
 const Header = () => {
   const { data } = React.useContext(UserContext);
@@ -9,7 +10,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
-        <Link className={styles.logo} to="/" aria-label="Dogs - Home">
+        <Link className={styles.logo} to="/" aria-label="Burger - Home">
         </Link>
         {data ? (
           <Link className={styles.login} to="/conta">
