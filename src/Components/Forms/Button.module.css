@@ -1,0 +1,28 @@
+.button {
+  font-size: 1rem;
+  font-family: var(--type-first);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.4rem;
+  background: rgb(255, 45, 17);
+  /*background-image: url('../../Assets/botao-play.png');*/
+  background-repeat: no-repeat;
+  color:white;
+  min-width: 8rem;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  transition: 0.1s;
+  border: 1px solid black;
+  font-weight: bolder;
+}
+
+.button:hover,
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(255, 180, 170), 0 0 0 4px rgba(255, 33, 17, 0.966);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
