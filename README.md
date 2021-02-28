@@ -16,10 +16,11 @@ Seja bem vindo (a) ao Burger Game!
 
 ## 1. Sobre
 O Burger Game é uma aplicação criada para um pequeno restaurante de hambúrgueres, com o intuito de facilitar a vida dos usuários (Garçom/Garçonetes e Cozinheiros) para que possam realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente. Nossa aplicação:
--Permite selecionar os produtos.
--Incluir a quantidade, nome e mesa.
--Excluir o item quando necessario e recalcular valor total.
--Encaminha os pedidos a cozinha de forma ordenada. 
+
+- Permite selecionar os produtos.
+- Incluir a quantidade, nome e mesa.
+- Excluir o item quando necessario e recalcular valor total.
+- Encaminha os pedidos a cozinha de forma ordenada. 
 
 ## 6. :writing_hand: Histórias de Usuário
 
