@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Burger Game :hamburger::fries:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## :page_facing_up: Índice
 
-In the project directory, you can run:
+* [1. Sobre](#1-sobre)
+* [2. Usuários](#2-usuários)
+* [3. Problema a ser solucionado](#3-problema-a-ser-solucionado)
+* [4. Solução](#4-solução)
+* [5. Persona](#5-persona)
+* [6. Histórias de Usuário](#6-história-de-usuário)
+* [7. Desenvolvedoras](#7-desenvolvedoras)
 
-### `yarn start`
+Seja bem vindo (a) ao Burger Game!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 1. Sobre
+O Burger Game é uma aplicação criada para um pequeno restaurante de hambúrgueres, com o intuito de facilitar a vida dos usuários (Garçom/Garçonetes e Cozinheiros) para que possam realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente. Nossa aplicação:
+-Permite selecionar os produtos.
+-Incluir a quantidade, nome e mesa.
+-Excluir o item quando necessario e recalcular valor total.
+-Encaminha os pedidos a cozinha de forma ordenada. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 6. :writing_hand: Histórias de Usuário
 
-### `yarn test`
+"Eu como funcionário do restaurante quero entrar na plataforma e ver apenas a tela importante para o meu trabalho."
+"Eu como garçom/garçonete quero poder anotar o meu pedido saber o valor de cada produto e poder enviar o pedido para a cozinha para ser preparado."
+"Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente."
+"Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los rapidamente aos clientes."
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 7. Desenvolvedoras
+O Burger Game é orgulhosamente desenvolvido por [Luciana Pereira](https://github.com/Lu-Pereira) e  [Karine Souza](https://github.com/karinesouza) Alunas da turma SAP-005 da [<Laboratória>](https://www.laboratoria.la/br "Laboratória Brasil") :yellow_heart:.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+:mortar_board:	Este projeto foi o quinto desafio do bootcamp e nos ensinou muito sobre React:
+Agradecemos por esse grande desafio! :rocket:
