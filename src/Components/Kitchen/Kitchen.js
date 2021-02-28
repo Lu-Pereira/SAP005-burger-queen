@@ -6,55 +6,43 @@ export const Kitchen = () => {
   const token = localStorage.getItem("token");
   const [order, setOrder] = useState([]);
   const [orderId, setOrderId] = useState([]);
+  const [orderReady, setOrderReady] = useState({status: "pending"});
 
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/orders", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-      },
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+        },
     })
       .then((response) => response.json())
       .then((response) => {
         setOrder(response);
-      })
-      .then((data) => {
-        console.log(data);
-      })
+        })
+        .then((data) => {
+            const itens = data;
+            const id = itens.filter((products) => products.id.includes('id'));
+            setOrderReady(id)
+            console.log(id);
 
-      .catch((error) => console.log("error", error));
-  },[]);
+        })
+        .catch((error) => console.log("error", error));
+    }, []);
 
-  const deleteOrder = (product) => {
-    fetch(
-      "https://lab-api-bq.herokuapp.com/orders/"`${orderId}`,
-      {
-        method: "DELETE",
-        path: `${orderId}`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${token}`,
-        },
-      },
-      []
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const dataId = data;
-        const filterId = dataId.filter((products) =>
-          products.id.includes("id")
-        );
-        setOrderId(filterId);
-        console.log(data);
-      })
-      .then((data) => {
-        const itens = data;
-        //const item = itens.filter(product => product.id.includes('itensOrdem'));
-        //setOrderId(item)
-      }, [])
-      .catch((error) => console.log("error", error));
-  };
+    const handleUpdateOrder = () => {
+        fetch('https://lab-api-bq.herokuapp.com/orders', {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `${token}`,
+            },
+            path: '',
+        })
+        setOrderReady({...orderReady, status: 'finished'})
+    }
+
+
 
   return (
     <>
@@ -77,6 +65,7 @@ export const Kitchen = () => {
                      </>
                    ))}</p> 
                   <p>Mesa: {product.table}</p>
+                  <p><b>Estatus: {product.status}</b></p>
                    </div>
                 </li>
               </div>

@@ -2,12 +2,12 @@
     perspective: 400px;
     width: 20%;
     height: 190px;
-    margin: 0 2.5% 40px 2.5%;
     
 }
 
 .container_content div {
     display: inline-table;
+    margin: 1vh;
 }
 .card:nth-child(3n) {
     margin-right: 0;
@@ -43,11 +43,21 @@
 
 .products {
     border: 1px solid black;
-    margin: 10px;
     padding: 10px;
 }
 
 li {
     list-style-type: none; 
+
+}
+
+@media (max-width: 40rem) {
+    .container_content{
+        margin: -27px;
+        margin-top: 5vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+    }
 
 }

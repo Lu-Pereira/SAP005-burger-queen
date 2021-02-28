@@ -155,13 +155,13 @@ export const Menu = () => {
           return (
             <div onClick={() => addItems(product)} className={styles.container}>
               <div className={styles.card}>
-                <div className={styles.card_ontainer}>
+                <div className={styles.card_container}>
                   <li key={product.id}>
                     <div className={styles.hamburgers_thumb}>
                       <img src={product.image} alt={`${product.name} Thumb`} />
                     </div>
-                    <p>{product.name}</p>
-                    <p>{product.complement}</p>
+                    <p><b>{product.name + ' ' + product.flavor}</b></p>
+                    <p>{product.complement === 'null' ? '' : product.complement}</p>
                     <p>R${product.price}</p>
                   </li>
                 </div>

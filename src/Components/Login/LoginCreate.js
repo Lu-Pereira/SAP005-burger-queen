@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Input from '../Forms/Input';
 import Button from '../Forms/Button';
 import Head from '../Helper/Head';
+import styles from './LoginCreate.module.css';
 
 
 
@@ -43,7 +44,7 @@ const LoginCreate = () => {
     <section className="animeLeft">
       <Head title="Crie sua conta" />
       <h1 className="title">Cadastre-se</h1>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.forms} onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" onChange={(e) =>
           registrationData({ ...signIn, name: e.target.value })
         }/>

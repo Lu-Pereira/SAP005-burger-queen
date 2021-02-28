@@ -18,14 +18,36 @@
   margin-top: 20vh;
 }
 
+@media (max-width: 100rem) {
+  .login {
+    grid-template-columns: 1fr ;
+    min-height: 100vh;
+    gap: 1rem;
+  
+  }
+  .login::before {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    content: '';
+    width: 100%;
+    margin-top: 50px;
+    }
+  .forms {
+    max-width: 80%;
+    margin-top: 1vh;
+  }
+}
+
 @media (max-width: 40rem) {
   .login {
     grid-template-columns: 1fr;
+    
   }
   .login::before {
     display: none;
   }
   .forms {
-    max-width: 100%;
+    max-width: 70%;
+    margin-top: 4vh;
   }
 }
