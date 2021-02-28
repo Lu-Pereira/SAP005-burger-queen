@@ -62,7 +62,7 @@ const LoginForm = () => {
             handleClick();
           }}>{ active ? 'Carregando...' : 'Entrar'}</Button>
       </form>
-      <div className={styles.cadastro}>
+      <div className={styles.register}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site.</p>
         <Link className={stylesBtn.button} to="/register">

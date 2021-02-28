@@ -10,6 +10,7 @@ import LoginCreate from './LoginCreate';
 import styles from './Login.module.css';
 import NotFound from '../NotFound';
 import Menu from '../Menu/Menu'
+import Footer from '../Footer/Footer';
 
 const Login = () => {
 
