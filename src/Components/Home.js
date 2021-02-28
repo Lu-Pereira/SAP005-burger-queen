@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from './Helper/Head';
-import Login from './Login/Login';
 
 const Home = () => {
   return (
@@ -9,7 +8,6 @@ const Home = () => {
         title='Home'
         description="Home do burger-game."
       />
-      <Login />
     </section>
   );
 };

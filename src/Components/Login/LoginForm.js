@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Input from '../Forms/Input';
 import Button from '../Forms/Button';
-import { UserContext } from '../../UserContext';
 import Error from '../Helper/Error';
 import styles from './LoginForm.module.css';
 import stylesBtn from '../Forms/Button.module.css';
@@ -11,8 +10,14 @@ import Head from '../Helper/Head';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const direcion = useHistory();
+  const [active, setActive] = useState(false);
+  const direcion = useHistory(); 
 
+  const handleClick = () => {
+    setActive(!active);
+  }
+
+  
   const directMenu = () => {
     direcion.push('/menu');
   };
@@ -44,32 +49,18 @@ const LoginForm = () => {
       });
   };
 
-  const { userLogin, error, loading } = React.useContext(UserContext);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    if (email.validate() && password.validate()) {
-      userLogin(email.value, password.value);
-    }
-  }
-
   return (
     <section className="animeLeft">
       <Head title="Login" />
       <h1 className="title">Login</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form}>
         <Input label="Usuário (e-mail)" type="text" value={email} name="name" onChange={(e) => setEmail(e.target.value)} />
         <Input label="Senha" type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)} />
-        {loading ? (
-          <Button disabled>Carregando...</Button>
-        ) : (
           <Button type='submit' onClick={(e) => {
             e.preventDefault();
             handleAuth();
-          }}>Entrar</Button>
-        )}
-        <Error error={error && 'Dados incorretos.'} />
+            handleClick();
+          }}>{ active ? 'Carregando...' : 'Entrar'}</Button>
       </form>
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>

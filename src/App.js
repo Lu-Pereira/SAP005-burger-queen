@@ -1,31 +1,25 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-//import { Login } from './pages/Login';
-//import { Register } from './pages/Register';
-//import { Kitchen } from './pages/Kitchen';
-//import { Menu } from './pages/Menu';
 import Header from './Components/Header';
-import Footer from './Components/Footer';
+import Footer from './Components/Footer/Footer';
+import Home from './Components/Home';
 import Login from './Components/Login/Login';
-import { UserStorage } from './UserContext';
 import NotFound from './Components/NotFound';
-import LoginForm from "./Components/Login/LoginForm";
-
+import Menu from './Components/Menu/Menu'
+import LoginCreate from "./Components/Login/LoginCreate";
+import Kitchen from "./Components/Kitchen/Kitchen";
 
 export const App = () => {
   return (
   <BrowserRouter>
-    <UserStorage>
       <Header />
-      <Login />
-      <main className="AppBody">
         <Switch>
-          <Route path="/" element={<Login />} />
-          <Route path="/" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path='/' exact component={Login} />
+          <Route path='/register' component={LoginCreate} />
+          <Route path='/menu' component={Menu} />
+          <Route path='/kitchen' component={Kitchen} />
+          <Route path="*" component={NotFound} />
         </Switch>
-      </main>
       <Footer />
-    </UserStorage>
   </BrowserRouter>
   )
 };

@@ -1,72 +1,68 @@
-import React from 'react';
+import { Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import Input from '../Forms/Input';
 import Button from '../Forms/Button';
-import Error from '../Helper/Error';
-import useForm from '../../Hooks/useForm';
-import { USER_POST } from '../../Api';
-import { UserContext } from '../../UserContext';
-import useFetch from '../../Hooks/useFetch';
 import Head from '../Helper/Head';
-import { useHistory  } from 'react-router-dom';
+
+
+
 
 const LoginCreate = () => {
-  const name = useForm();
-  const email = useForm('email');
-  const password = useForm();
-  const role = useForm();
-
-  const { userLogin } = React.useContext(UserContext);
-  const { loading, error, request } = useFetch();
-
+  const [signIn, registrationData] = useState({ restaurant: 'burger game' });
   const direcion = useHistory();
 
   const directMenu = () => {
-    direcion.push("/menu");
+    direcion.push('/menu');
   };
 
   const directKitchen = () => {
-    direcion.push("/kitchen");
+    direcion.push('/kitchen');
   };
 
-  async function handleSubmit(e) {
+   const handleSubmit = (e) => {
     e.preventDefault();
-    const { url, options } = USER_POST({
-      name: name.value,
-      email: email.value,
-      password: password.value,
-      role: role.value,
-      restaurant: "burger game",
+    fetch('https://lab-api-bq.herokuapp.com/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(signIn),
     })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      if (data.role === "waiter") {
-        directMenu();
-      } else if (data.role === "cooker") {
-        directKitchen();
-      }
-    });
-    const { response } = await request(url, options);
-    if (response.ok) userLogin(name.value, password.value);
-  }
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.role === 'waiter') {
+          directMenu();
+        } else if (data.role === 'cooker') {
+          directKitchen();
+        }
+      });
+    };
+
+  
 
   return (
     <section className="animeLeft">
       <Head title="Crie sua conta" />
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
-        <Input label="Usuário" type="text" name="username" {...name} />
-        <Input label="Email" type="email" name="email" {...email} />
-        <Input label="Senha" type="password" name="password" {...password} />
-        <Input label="Garçom/Garçonete" type="radio" name="role" value='waiter' {...role} />
-        <Input label="Cozinheiro" type="radio" name="role" value='cooker' {...role} />
-
-        {loading ? (
-          <Button disabled>Cadastrando...</Button>
-        ) : (
+        <Input label="Usuário" type="text" name="username" onChange={(e) =>
+          registrationData({ ...signIn, name: e.target.value })
+        }/>
+        <Input label="Email" type="email" name="email"  onChange={(e) =>
+              registrationData({ ...signIn, email: e.target.value })
+            } />
+        <Input label="Garçom/Garçonete" type='checkbox' name="role" value='waiter' onChange={(e) =>
+              registrationData({ ...signIn, role: e.target.value })
+            } />
+        <Input label="Cozinheiro" type='checkbox' name="role" value='cooker' onChange={(e) =>
+              registrationData({ ...signIn, role: e.target.value })
+            }/>
+            <Input label="Senha" type="password" name="password" onChange={(e) =>
+              registrationData({ ...signIn, password: e.target.value })
+            }/>
           <Button>Cadastrar</Button>
-        )}
-        <Error error={error} />
+        <p>
+          Se já for cadastrado: <Link to="/">Login</Link>
+        </p>
       </form>
     </section>
   );
