@@ -1,4 +1,4 @@
-# Burger Game :hamburger::fries:
+# Burger Game :hamburger::fries:🎮
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
