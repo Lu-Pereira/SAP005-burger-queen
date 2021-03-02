@@ -32,7 +32,9 @@ const LoginForm = () => {
       method: 'POST',
       headers: {
         'accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded' 
+        'Content-Type': 'application/x-www-form-urlencoded',
+        "Access-Control-Allow-Origin": "*",
+
       },
     })
       .then((response) => response.json())
