@@ -18,7 +18,7 @@
   margin-top: 20vh;
 }
 
-@media (max-width: 100rem) {
+@media (max-width: 80rem) {
   .login {
     grid-template-columns: 1fr ;
     min-height: 100vh;
@@ -27,7 +27,6 @@
   }
   .login::before {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
     content: '';
     width: 100%;
     margin-top: 50px;

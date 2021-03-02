@@ -24,7 +24,11 @@ const LoginCreate = () => {
     e.preventDefault();
     fetch('https://lab-api-bq.herokuapp.com/users', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+
+     },
       body: JSON.stringify(signIn),
     })
       .then((response) => response.json())
