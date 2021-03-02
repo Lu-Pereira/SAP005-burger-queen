@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export const Kitchen = () => {
   const token = localStorage.getItem("token");
   const [order, setOrder] = useState('');
+  const [completedOrder, setComletedOrder] = useState('')
   const orderItems = useRef(false);
   
   const handleUpdateOrder = (product) => {
@@ -18,7 +19,7 @@ export const Kitchen = () => {
               "Access-Control-Allow-Origin": "*",
              "Authorization": `${token}`
          },
-         body:JSON.stringify({"status": `finalizado`})
+         body:JSON.stringify({"status": `Pronto`})
      })
      .then((response) => response.json())
        .then((result) => {
