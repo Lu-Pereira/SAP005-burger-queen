@@ -18,12 +18,15 @@ export const Kitchen = () => {
               "Access-Control-Allow-Origin": "*",
              "Authorization": `${token}`
          },
-         body:JSON.stringify({"status": `finalizado`})
+         body:JSON.stringify({"status": `Pronto`})
      })
      .then((response) => response.json())
        .then((result) => {
          console.log(result);
-         setOrder(prevUnidade => [...prevUnidade, result])
+         
+         const copia = order.filter(pedido => pedido.id != orderId) 
+      setOrder(copia)
+
        })
        .catch((error) => console.log("error", error));
  }
@@ -31,6 +34,8 @@ export const Kitchen = () => {
   const handleGetOrder = useCallback(async () => {
     fetch("https://lab-api-bq.herokuapp.com/orders", {
         headers: {
+          method: 'GET',
+
             "accept": "application/json",
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
@@ -39,8 +44,8 @@ export const Kitchen = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        const order = response.filter(item => item.status === `pending`)
-        setOrder(order);
+        setOrder(response.filter(item => item.status =='pending'))
+        
       })
       .catch((error) => console.log("error", error));
       }, [setOrder, token])
@@ -58,7 +63,9 @@ export const Kitchen = () => {
     <div>
       <h1>Pedidos solicitados</h1>
       <div className={styles.container_content}>
-      {order && order.map((product, index) => {
+      {order && order
+      .sort((a, b) => (a.id > b.id ? 1 : -1))
+      .map((product, index) => {
         return (
           <div className={styles.container}>
             <div className={styles.card}>
@@ -69,7 +76,9 @@ export const Kitchen = () => {
                   <p>Mesa: {product.table}</p>
                   <p><b>Estatus: {product.status}</b></p>
                   <div className={styles.products}>
-                    <div onClick={() => handleUpdateOrder(product)}>
+                    <div>
+                  <button onClick={() => handleUpdateOrder(product)}>Pedidos Prontos</button>
+
                    <p>{product.Products.map((item) => (
                      <>
                      <p>{item.name}</p>

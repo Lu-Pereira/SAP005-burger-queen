@@ -17,6 +17,7 @@ const Login = () => {
   return (
     <section className={styles.login}>
       <div className={styles.forms}>
+        <img src="https://media.giphy.com/media/loRt6ja0q6VHcljBCk/giphy.gif"/>
         <LoginForm />
       </div>
     </section>
