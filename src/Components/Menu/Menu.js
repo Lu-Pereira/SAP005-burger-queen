@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Forms/Button";
 import styles from "./Menu.module.css";
@@ -15,6 +15,7 @@ export const Menu = () => {
   const [excludedProduct, setExcludeProduct] = useState([]);
   const [amount, setAmount] = useState([]);
   const [productPrice, setProductPrice] = useState([]);
+  const [orderStatus, setOrderStatus] = useState([]);
 
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/products", {
@@ -106,6 +107,8 @@ export const Menu = () => {
       })
       .catch((error) => console.log("error", error));
   };
+
+  
 
   return (
     <div className={styles.container_menu}>
@@ -278,6 +281,7 @@ export const Menu = () => {
               </div>
             );
           })}
+          
           <div>
             <h3>Total</h3>
             <h3>R${amount}</h3>
@@ -288,8 +292,12 @@ export const Menu = () => {
             <Link className="link-home" to="/">
               Sair
             </Link>
+            <Link className="link-Pedidos" to="/PedidosPronto">Pedidos
+               </Link>
+
           </div>
         </div>
+        
       </div>
     </div>
   );
