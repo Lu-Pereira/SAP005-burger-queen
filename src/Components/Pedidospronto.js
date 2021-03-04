@@ -67,7 +67,13 @@ const handleGetOrder = useCallback(async () => {
  <h1>Pedidos Finalizados</h1>
  <div>
  {order && order.map((product, index) => {
+        const dataUpdated = new Date(product.updatedAt);
+        const dataCreated = new Date(product.createdAt);
+        const diferença = Math.abs(dataUpdated) - dataCreated;
+        const minutes = Math.floor(diferença / 1000 / 60);
+  
    return (
+       
      <div>
        <div>
          <div>
@@ -75,7 +81,8 @@ const handleGetOrder = useCallback(async () => {
              <p><b>Comanda nº {index}</b></p>
              <p>Cliente: {product.client_name}</p>
              <p>Mesa: {product.table}</p>
-             <p><b>Estatus: {product.status}</b></p>
+             <p><b>Status: {product.status}</b></p>
+             <p>Tempo: {minutes}  min </p>
              <div>
                <div>
              <button onClick={() => handleUpdateOrder(product)}>Pedido entregue</button>
