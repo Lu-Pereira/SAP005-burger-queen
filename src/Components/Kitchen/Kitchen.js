@@ -60,6 +60,7 @@ export const Kitchen = () => {
   
 
   return (
+   
     <div>
       <h1>Pedidos solicitados</h1>
       <div className={styles.container_content}>
@@ -76,6 +77,7 @@ export const Kitchen = () => {
                   <p>Mesa: {product.table}</p>
                   <p><b>Estatus: {product.status}</b></p>
                   <div className={styles.products}>
+
                     <div>
                   <button onClick={() => handleUpdateOrder(product)}>Pedidos Prontos</button>
 

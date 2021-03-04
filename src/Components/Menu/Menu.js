@@ -49,9 +49,11 @@ export const Menu = () => {
   }, []);
 
   const addItems = (product) => {
-    setOrderItems([...orderItems, product]);
-    setProductPrice([...productPrice, product.price]);
-    const requestedProduct = orderItems.map((product) => {
+    const test = [...orderItems, product]
+    setOrderItems(test);
+    const test2 = [...productPrice, product.price]
+    setProductPrice(test2);
+    const requestedProduct = test.map((product) => {
       return {
         id: product.id,
         qtd: 1,
@@ -76,7 +78,7 @@ export const Menu = () => {
   };
 
   const totalSum = (total, num) => {
-    setAmount(productPrice.reduce((total, num) => total + num));
+    setAmount(productPrice.reduce((total, num) => total + num,0));
   };
 
   const deleteItems = (product) => {
