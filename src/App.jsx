@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from './Components/Header';
 import Footer from './Components/Footer/Footer';
 import Login from './Components/Login/Login';
 import NotFound from './Components/NotFound';
@@ -11,7 +10,6 @@ import { Pedidos } from './Components/Pedidospronto';
 
 export const App = () => (
   <BrowserRouter>
-    <Header />
     <Switch>
       <Route path="/" exact component={Login} />
       <Route path="/register" component={LoginCreate} />
