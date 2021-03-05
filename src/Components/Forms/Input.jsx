@@ -1,24 +1,30 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = ({ label, type, name, value, onChange, error, onBlur }) => {
+export default function Input({
+  labelText,
+  typeInput,
+  nameInput,
+  valueInput,
+  onChangeInput,
+  name,
+  onBlur,
+}) {
   return (
     <div className={styles.wrapper}>
       <label htmlFor={name} className={styles.label}>
-        {label}
+        {labelText}
       </label>
       <input
         id={name}
-        name={name}
+        name={nameInput}
         className={styles.input}
-        type={type}
-        value={value}
-        onChange={onChange}
+        type={typeInput}
+        value={valueInput}
+        onChange={onChangeInput}
         onBlur={onBlur}
       />
-      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-};
-
-export default Input;
+}
