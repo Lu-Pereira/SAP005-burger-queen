@@ -10,8 +10,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * [4. Desenvolvedoras](#4-Desenvolvedoras)
 
 
-* [7. Desenvolvedoras](#7-desenvolvedoras)
-
 Seja bem vindo (a) ao Burger Game!
 
 ## 1. Sobre
