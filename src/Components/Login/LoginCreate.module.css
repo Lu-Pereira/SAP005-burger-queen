@@ -1,16 +1,42 @@
 
-@media (max-width: 100rem) {
-    .forms {
-      max-width: 85%;
-      margin-top: 6vh;
-      margin-left: 1rem;
-    }
-  }
+.forms{
+
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e45412;
+  margin-left: 435px;
+  padding: 3rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 8px 0px #383636;
   
-  @media (max-width: 40rem) {
+
+}
+
+h1.title {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+  @media (max-width: 768px){
     .forms {
-      max-width: 80%;
-      margin-top: 7vh;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      background-color: #e45412;
+      margin-left: 145px;
+      padding: 3rem 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 5px 5px 8px 0px #383636;
+      margin-bottom: 30px;
+      
     }
-  }
+
+    h1.title {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   
+  
+  }

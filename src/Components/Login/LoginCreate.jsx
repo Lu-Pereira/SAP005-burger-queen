@@ -42,7 +42,7 @@ const LoginCreate = () => {
   return (
     <section className="animeLeft">
       <Head title="Crie sua conta" />
-      <h1 className="title">Cadastre-se</h1>
+      <h1 className={styles.title}>Cadastre-se</h1>
       <form className={styles.forms} onSubmit={handleSubmit}>
         <Input
           labelText="Usuário"
