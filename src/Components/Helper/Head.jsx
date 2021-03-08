@@ -1,4 +1,5 @@
-/* eslint-disable prefer-template */
+/* eslint-disable prefer-template *//* eslint-disable linebreak-style */
+
 import React, { useEffect } from 'react';
 
 const Head = (props) => {

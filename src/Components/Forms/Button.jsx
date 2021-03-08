@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types *//* eslint-disable linebreak-style */
+
 import React from 'react';
 import styles from './Button.module.css';
 

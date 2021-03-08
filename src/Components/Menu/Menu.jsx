@@ -1,9 +1,12 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/click-events-have-key-events *//* eslint-disable linebreak-style */
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Forms/Button';
 import Input from '../Forms/Input';
 import styles from './Menu.module.css';
+import ButtonAdd from '../Forms/ButtonAdd';
+import ButtonDelet from '../Forms/ButtonDelet';
 
 export const Menu = () => {
   const token = localStorage.getItem('token');
@@ -56,12 +59,16 @@ export const Menu = () => {
       a[b.id].push(b);
       return a;
     }, Object.create(null));
+    console.log(orderItems);
 
     const productList = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(quantity)) {
       productList.push({ id: key, qtd: value.length });
     }
+    // const obj = { quantity}
+
+    // const productList = product.map {}
     setOrder({ ...order, products: productList });
     console.log(order);
   };
@@ -123,11 +130,9 @@ export const Menu = () => {
         <div className={styles.container_grid}>
           {modal ? (
             <div>
-              <h3>Café da manhã</h3>
+              <h3>🥞Café da manhã☕</h3>
               {cafeMenu.map((product) => (
-                // eslint-disable-next-line jsx-a11y/no-static-element-interactions
                 <div
-                  onClick={handleAddItems}
                   className={styles.container}
                 >
                   <div className={styles.card}>
@@ -144,6 +149,7 @@ export const Menu = () => {
                           R$
                           {product.price}
                         </p>
+                        <ButtonAdd onClickBtn={() => handleAddItems(product)} />
                       </li>
                     </div>
                   </div>
@@ -152,11 +158,9 @@ export const Menu = () => {
             </div>
           ) : (
             <div>
-              <h3>Hamburgueres</h3>
+              <h3>Hamburgueres🍟</h3>
               {hamburgers.map((product) => (
-                // eslint-disable-next-line jsx-a11y/no-static-element-interactions
                 <div
-                  onClick={() => handleAddItems(product)}
                   className={styles.container}
                 >
                   <div className={styles.card}>
@@ -180,6 +184,8 @@ export const Menu = () => {
                           R$
                           {product.price}
                         </p>
+                        <ButtonAdd onClickBtn={() => handleAddItems(product)} />
+
                       </li>
                     </div>
                   </div>
@@ -191,9 +197,7 @@ export const Menu = () => {
         <div>
           <h3>Acompanhamentos</h3>
           {accompaniment.map((product) => (
-            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
             <div
-              onClick={() => handleAddItems(product)}
               className={styles.container}
             >
               <div className={styles.card}>
@@ -210,6 +214,8 @@ export const Menu = () => {
                       R$
                       {product.price}
                     </p>
+                    <ButtonAdd onClickBtn={() => handleAddItems(product)} />
+
                   </li>
                 </div>
               </div>
@@ -219,9 +225,7 @@ export const Menu = () => {
         <div>
           <h3>Bebidas</h3>
           {drinks.map((product) => (
-            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
             <div
-              onClick={() => handleAddItems(product)}
               className={styles.container}
             >
               <div className={styles.card}>
@@ -238,6 +242,7 @@ export const Menu = () => {
                       R$
                       {product.price}
                     </p>
+                    <ButtonAdd onClickBtn={() => handleAddItems(product)} />
                   </li>
                 </div>
               </div>
@@ -249,9 +254,7 @@ export const Menu = () => {
         <div>
           <h3>Produtos adicionados</h3>
           {orderItems.map((product) => (
-            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
             <div
-              onClick={() => deleteItems(product)}
               className={styles.container}
             >
               <div className={styles.card}>
@@ -273,6 +276,7 @@ export const Menu = () => {
                       R$
                       {product.price}
                     </p>
+                    <ButtonDelet onClickBtn={() => deleteItems(product)} />
                   </li>
                 </div>
               </div>
@@ -287,15 +291,11 @@ export const Menu = () => {
             </h3>
             <Button onClickBtn={() => totalSum()}>Totalizar itens</Button>
             <Button onClickBtn={() => submitOrder()}>Finalizar pedido</Button>
-          </div>
-          <div>
             <Link className="link-home" to="/">
               Sair
             </Link>
-            <Link className="link-Pedidos" to="/PedidosPronto">
-              Pedidos
-            </Link>
           </div>
+          <div />
         </div>
       </div>
     </div>

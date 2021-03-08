@@ -1,5 +1,7 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable linebreak-style */
+/* eslint-disable react/react-in-jsx-scope *//* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable linebreak-style */
+
 import Logoimg from '../../Assets/logot.jpeg';
 import './Logo.css';
 

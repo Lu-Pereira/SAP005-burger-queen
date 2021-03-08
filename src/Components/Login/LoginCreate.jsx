@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import Input from '../Forms/Input';

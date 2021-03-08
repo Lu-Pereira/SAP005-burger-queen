@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 module.exports = {
   env: {
     browser: true,
@@ -19,5 +20,6 @@ module.exports = {
   ],
   rules: {
     'import/no-named-as-default': 0,
+    'linebreak-style': ['error', 'windows'],
   },
 };
