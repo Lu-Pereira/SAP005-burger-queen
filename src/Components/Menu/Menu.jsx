@@ -1,4 +1,5 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable no-use-before-define */
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Forms/Button';
@@ -18,7 +19,7 @@ export const Menu = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [, setExcludeProduct] = useState([]);
   const [amount, setAmount] = useState([0]);
-  const [productPrice, setProductPrice] = useState([]);
+  const [productPrice, setProductPrice] = useState([0]);
 
   useEffect(() => {
     fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -72,7 +73,7 @@ export const Menu = () => {
   }, [orderItems]);
 
   const totalSum = () => {
-    setAmount(productPrice.reduce((total, num) => total + num));
+    setAmount(productPrice.reduce((total, num) => total + num, 0));
   };
 
   const deleteItems = (product) => {
@@ -88,14 +89,24 @@ export const Menu = () => {
         'Content-Type': 'application/json',
         Authorization: `${token}`,
       },
-      body: JSON.stringify(order),
+      body: JSON.stringify({
+        client: `${order.client}`,
+        table: `${order.table}`,
+        products:
+        orderItems.map((product) => (
+          {
+            id: Number(product.id),
+            qtd: 1,
+          }
+        )),
+      }),
     })
       .then((response) => {
         response.json().then((data) => {
           console.log(data);
           setOrder({});
           setOrderItems([]);
-          setAmount([0]);
+          setAmount([]);
           setProductPrice([]);
           setExcludeProduct([]);
           alert('Pedido criado com sucesso!');
@@ -130,9 +141,7 @@ export const Menu = () => {
             <div>
               <h3>🥞Café da manhã☕</h3>
               {cafeMenu.map((product) => (
-                <div
-                  className={styles.container}
-                >
+                <div className={styles.container}>
                   <div className={styles.card}>
                     <div className={styles.card_container}>
                       <li key={product.id}>
@@ -158,9 +167,7 @@ export const Menu = () => {
             <div>
               <h3>Hamburgueres🍟</h3>
               {hamburgers.map((product) => (
-                <div
-                  className={styles.container}
-                >
+                <div className={styles.container}>
                   <div className={styles.card}>
                     <div className={styles.card_container}>
                       <li key={product.id}>
@@ -183,7 +190,6 @@ export const Menu = () => {
                           {product.price}
                         </p>
                         <ButtonAdd onClickBtn={() => handleAddItems(product)} />
-
                       </li>
                     </div>
                   </div>
@@ -195,17 +201,12 @@ export const Menu = () => {
         <div>
           <h3>Acompanhamentos</h3>
           {accompaniment.map((product) => (
-            <div
-              className={styles.container}
-            >
+            <div className={styles.container}>
               <div className={styles.card}>
                 <div className={styles.card_container}>
                   <li key={product.id}>
                     <div className={styles.hamburgers_thumb}>
-                      <img
-                        src={product.image}
-                        alt={`${product.name} Thumb`}
-                      />
+                      <img src={product.image} alt={`${product.name} Thumb`} />
                     </div>
                     <p>{product.name}</p>
                     <p>
@@ -213,7 +214,6 @@ export const Menu = () => {
                       {product.price}
                     </p>
                     <ButtonAdd onClickBtn={() => handleAddItems(product)} />
-
                   </li>
                 </div>
               </div>
@@ -223,17 +223,12 @@ export const Menu = () => {
         <div>
           <h3>Bebidas</h3>
           {drinks.map((product) => (
-            <div
-              className={styles.container}
-            >
+            <div className={styles.container}>
               <div className={styles.card}>
                 <div className={styles.card_container}>
                   <li key={product.id}>
                     <div className={styles.hamburgers_thumb}>
-                      <img
-                        src={product.image}
-                        alt={`${product.name} Thumb`}
-                      />
+                      <img src={product.image} alt={`${product.name} Thumb`} />
                     </div>
                     <p>{product.name}</p>
                     <p>
@@ -252,23 +247,16 @@ export const Menu = () => {
         <div>
           <h3>Produtos adicionados</h3>
           {orderItems.map((product) => (
-            <div
-              className={styles.container}
-            >
+            <div className={styles.container}>
               <div className={styles.card}>
                 <div className={styles.card_container}>
                   <li key={product.id}>
                     <div className={styles.hamburgers_thumb}>
-                      <img
-                        src={product.image}
-                        alt={`${product.name} Thumb`}
-                      />
+                      <img src={product.image} alt={`${product.name} Thumb`} />
                     </div>
                     <p>{product.name}</p>
                     <p>
-                      {product.complement === 'null'
-                        ? ''
-                        : product.complement}
+                      {product.complement === 'null' ? '' : product.complement}
                     </p>
                     <p>
                       R$
@@ -292,7 +280,9 @@ export const Menu = () => {
             <Link className="link-home" to="/">
               Sair
             </Link>
-            <Link className="link-Pedidos" to="/PedidosPronto">Pedidos</Link>
+            <Link className="link-Pedidos" to="/PedidosPronto">
+              Pedidos
+            </Link>
           </div>
           <div />
         </div>
