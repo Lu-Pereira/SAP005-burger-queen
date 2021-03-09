@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events *//* eslint-disable linebreak-style */
-
+/* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Forms/Button';
@@ -18,7 +17,7 @@ export const Menu = () => {
   const [drinks, setDrinks] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
   const [, setExcludeProduct] = useState([]);
-  const [amount, setAmount] = useState([]);
+  const [amount, setAmount] = useState([0]);
   const [productPrice, setProductPrice] = useState([]);
 
   useEffect(() => {
@@ -45,20 +44,23 @@ export const Menu = () => {
   }, []);
 
   const handleAddItems = (product) => {
-    const test = [...orderItems, product];
-    setOrderItems(test);
-    const test2 = [...productPrice, product.price];
-    setProductPrice(test2);
-    const requestedProduct = test.map(() => ({
+    setOrderItems([...orderItems, product]);
+    setProductPrice([...productPrice, product.price]);
+  };
+
+  useEffect(() => {
+    const requestedProduct = orderItems.map((product) => ({
       id: product.id,
       qtd: 1,
     }));
+
     const quantity = requestedProduct.reduce((a, b) => {
       // eslint-disable-next-line no-param-reassign
       a[b.id] = a[b.id] || [];
       a[b.id].push(b);
       return a;
     }, Object.create(null));
+    // eslint-disable-next-line no-console
     console.log(orderItems);
 
     const productList = [];
@@ -66,15 +68,11 @@ export const Menu = () => {
     for (const [key, value] of Object.entries(quantity)) {
       productList.push({ id: key, qtd: value.length });
     }
-    // const obj = { quantity}
-
-    // const productList = product.map {}
     setOrder({ ...order, products: productList });
-    console.log(order);
-  };
+  }, [orderItems]);
 
   const totalSum = () => {
-    setAmount(productPrice.reduce((total, num) => total + num, 0));
+    setAmount(productPrice.reduce((total, num) => total + num));
   };
 
   const deleteItems = (product) => {
@@ -97,7 +95,7 @@ export const Menu = () => {
           console.log(data);
           setOrder({});
           setOrderItems([]);
-          setAmount([]);
+          setAmount([0]);
           setProductPrice([]);
           setExcludeProduct([]);
           alert('Pedido criado com sucesso!');
@@ -294,6 +292,7 @@ export const Menu = () => {
             <Link className="link-home" to="/">
               Sair
             </Link>
+            <Link className="link-Pedidos" to="/PedidosPronto">Pedidos</Link>
           </div>
           <div />
         </div>
