@@ -1,34 +1,74 @@
+body {
+    font-family: "Raleway",Sans-serif;
+    background-image: url('../../Assets/fundoDeTela.jpeg');
+    background-size: auto;
+    margin: 0;
+    padding: 0;
+    background-size: 768px 1024px;
+}
+.order {
+    border: 2px solid black;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.719);
+    box-shadow: 12px solid black;
+    margin-right: 30px;
+    margin-top: 40px;
+}
+
+/*NavBar*/
+.header {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    background:  #e45412c0;
+    top: 0px;
+}
+
+.nav {
+    display: flex;
+    justify-content:space-evenly;
+    height: 3rem;
+    margin: 0;
+    padding: 1rem;
+    font-weight: bold;
+  }
+  
+  
+  .login {
+    color: #333;
+  }
+  
+
+
 .hamburgers_thumb {
     width: 100px;
     height: 60px;
-    
 }
 
-.hamburgers_thumb img {
-    width: 70%;
-    height: 70%;
-}
+
 button {
 margin: 12px;
 }
 
-.container_menu div {
-    display: inline-table;
-    list-style-type: none; 
-
+.containerButton{
+    margin: 0 auto;
+    margin-top: 6rem;
+    
 }
 
-.container_menu {
-    margin-top: 80px;
+div.container_list {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    list-style-type: none; 
+
+
 }
 
 .container {
-    perspective: 400px;
-    width: 20%;
-    height: 190px;
-    margin: 0 2.5% 40px 2.5%;
+    /*border: solid 5px #f0f;*/
+    padding-bottom: 10%;
+    width: 10rem;
+    display: inline flow-root list-item;
 }
 
 .card {
@@ -55,45 +95,42 @@ margin: 12px;
     height: 100%;
     text-align: center;
     border-radius: 20px;
-    box-shadow: 4px 4px 20px rgba(12, 12, 12, 0.919);
+}
+h1 {
+    text-align: center;
 }
 
-
+h3 {
+    margin-bottom: 25px;
+    text-align: center;
+}
 
  p {
-    margin: 5px 0;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
-    
+    margin: 5px;
 }
 
 li {
     list-style-type: none; 
-    background-color: #fb1;;
+    background-color: #e45412;
     border: 2px solid black;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 11px;box-shadow: 0 0 0 0;
 
 }
 
-@media (max-width: 100rem) {
 
-    
-    .container_menu{
-        margin: 2vh;
-        margin-top: 7vh;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        
-    }
-  }
+.btn {
+    border-radius: 5px;
+}
   
   @media (max-width: 40rem) {
-    .container_menu{
-        margin: 2vh;
-        margin-top: 9vh;
+    div.container_list {
         display: grid;
-        grid-template-columns: 1fr;
-        
+        grid-template-columns: 1fr 1fr;
+    
     }
   }
   

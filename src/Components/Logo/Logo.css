@@ -1,7 +1,8 @@
 .imgLogo{
     width: 300px;
     height: 300%;
-    margin-left: 500px;  
+    margin-left: 500px; 
+    margin-top: 20px; 
 }
 .gif{
     width: 150px;
@@ -9,19 +10,19 @@
 }
 
 @media (max-width: 768px){
-.testelogo{
+/* .testelogo{
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-}
+} */
 .imgLogo{
-    width: 300px;
-    height: 300%;
-    margin-left: 200px;
-    margin-top: 10px;
+    width: 250px;
+    height: 250%;
+    margin-left: 240px;
+    margin-top: 30px;
 }
 .gif{
-     width: 150px;
-     margin-left: 260px;
+    width: 150px;
+    margin-left: 290px;
 }
     }

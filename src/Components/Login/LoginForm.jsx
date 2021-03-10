@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Input from '../Forms/Input';
@@ -52,8 +51,8 @@ const LoginForm = () => {
   return (
     <section className="animeLeft">
       <Head title="Login" />
-      <h1 className={styles.title}>Login</h1>
       <form className={styles.form}>
+        <h1 className={styles.title}>Login</h1>
         <Input
           labelText="Usuário (e-mail)"
           typeInput="text"
@@ -76,16 +75,13 @@ const LoginForm = () => {
         >
           {active ? 'Carregando...' : 'Entrar'}
         </Button>
-      </form>
-      <div className={styles.register}>
-        <h2 className={styles.subtitle}>Cadastre-se</h2>
-        <p>Ainda não possui conta? Cadastre-se no site.</p>
+        <p className={styles.text}>Ainda não possui conta? Cadastre-se no site.</p>
         <Button>
           <Link to="/register">
             Cadastro
           </Link>
         </Button>
-      </div>
+      </form>
     </section>
   );
 };

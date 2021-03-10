@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-
 import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import Input from '../Forms/Input';
@@ -17,6 +16,10 @@ const LoginCreate = () => {
 
   const directKitchen = () => {
     direcion.push('/kitchen');
+  };
+
+  const directAdministrative = () => {
+    direcion.push('/administrative');
   };
 
   const handleSubmit = (e) => {
@@ -37,6 +40,8 @@ const LoginCreate = () => {
           directMenu();
         } else if (data.role === 'cooker') {
           directKitchen();
+        } else if (data.role === 'administrative') {
+          directAdministrative();
         }
       });
   };
@@ -63,6 +68,13 @@ const LoginCreate = () => {
           typeInput="checkbox"
           nameInput="role"
           valueInput="waiter"
+          onChangeInput={(e) => registrationData({ ...signIn, role: e.target.value })}
+        />
+        <Input
+          labelText="Administrativo"
+          typeInput="checkbox"
+          nameInput="role"
+          valueInput="administrative"
           onChangeInput={(e) => registrationData({ ...signIn, role: e.target.value })}
         />
         <Input
