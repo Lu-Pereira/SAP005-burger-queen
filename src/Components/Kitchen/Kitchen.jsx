@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-
 import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';
@@ -71,7 +70,7 @@ export const Kitchen = () => {
             <div className={styles.container}>
               <div className={styles.card}>
                 <div className={styles.card_container}>
-                  <li key={product.id}>
+                  <li key={product.id} className={styles.order}>
                     <p>
                       <b>
                         Comanda nº
@@ -94,20 +93,17 @@ export const Kitchen = () => {
                     </p>
                     <div className={styles.products}>
 
-                      <div>
+                      <div className={styles.orderMenu}>
+                        {product.Products.map((item) => (
+                          <>
+                            <p>{item.name}</p>
+                            <p>
+                              Quantidade:
+                              {item.qtd}
+                            </p>
+                          </>
+                        ))}
                         <button type="submit" onClick={() => handleUpdateOrder(product)}>Pedidos Prontos</button>
-
-                        <p>
-                          {product.Products.map((item) => (
-                            <>
-                              <p>{item.name}</p>
-                              <p>
-                                Quantidade:
-                                {item.qtd}
-                              </p>
-                            </>
-                          ))}
-                        </p>
                       </div>
                     </div>
                   </li>

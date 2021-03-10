@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-nested-ternary *//* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-use-before-define */
@@ -9,6 +10,8 @@ import Input from '../Forms/Input';
 import styles from './Menu.module.css';
 import ButtonAdd from '../Forms/ButtonAdd';
 import ButtonDelet from '../Forms/ButtonDelet';
+import Sair from '../../Assets/sair.svg';
+// import { USER_POST } from '../../Api';
 
 export const Menu = () => {
   const token = localStorage.getItem('token');
@@ -22,6 +25,7 @@ export const Menu = () => {
   const [, setExcludeProduct] = useState([]);
   const [amount, setAmount] = useState([0]);
   const [productPrice, setProductPrice] = useState([0]);
+  /* const [name, setName] = useState(''); */
 
   useEffect(() => {
     fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -115,6 +119,16 @@ export const Menu = () => {
         });
       })
       .catch((error) => console.log('error', error));
+
+    /* useEffect(() => {
+      USER_POST().then((result) => {
+        result.json().then((data) => {
+          console.log(data.name);
+          const userName = data.name;
+          setName(userName);
+        });
+      });
+    }); */
   };
 
   return (
@@ -122,18 +136,16 @@ export const Menu = () => {
       <header className={styles.header}>
         <nav className={`${styles.nav} container`}>
           <Link className="link-home" to="/">
-            Sair
+            <img src={Sair} />
           </Link>
           {'  '}
           <Link className="link-Pedidos" to="/PedidosPronto">
-            Pedidos Prontos
+            Pedidos Prontos ✅
           </Link>
           {'  '}
-          <Link className="link-Pedidos" to="/PedidosPronto">
-            Histórico de Pedidos
+          <Link className="link-Pedidos" to="/historicoPedidos">
+            Histórico de Pedidos 📝
           </Link>
-
-          <h2>{}</h2>
         </nav>
       </header>
       <div className={styles.containerButton}>

@@ -4,6 +4,15 @@ body {
     background-size: auto;
     margin: 0;
     padding: 0;
+    background-size: 768px 1024px;
+}
+.order {
+    border: 2px solid black;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.719);
+    box-shadow: 12px solid black;
+    margin-right: 30px;
+    margin-top: 40px;
 }
 
 /*NavBar*/
@@ -11,15 +20,17 @@ body {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
-    background: blue;
+    background:  #e45412c0;
     top: 0px;
-  }
-  
-  .nav {
+}
+
+.nav {
     display: flex;
-    justify-content: space-between;
-    height: 30px;
+    justify-content:space-evenly;
+    height: 3rem;
     margin: 0;
+    padding: 1rem;
+    font-weight: bold;
   }
   
   
@@ -38,28 +49,23 @@ body {
 button {
 margin: 12px;
 }
-div.containerButton{
+
+.containerButton{
+    margin: 0 auto;
+    margin-top: 6rem;
+    
 }
 
 div.container_list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
-}
-
-div.list{
-}
-.container_menu div {
     list-style-type: none; 
 
-}
 
-.container_menu {
-    margin-top: 80px;
 }
 
 .container {
-    border: solid 5px #f0f;
+    /*border: solid 5px #f0f;*/
     padding-bottom: 10%;
     width: 10rem;
     display: inline flow-root list-item;
@@ -115,38 +121,16 @@ li {
 
 }
 
-img {
-    border-radius: 6px;
-}
 
 .btn {
     border-radius: 5px;
 }
-
-@media (max-width: 100rem) {
-
-    
-    .container_menu{
-        margin: 2vh;
-        margin-top: 7vh;
-        
-    }
-  }
   
   @media (max-width: 40rem) {
-    .container_menu{
-        margin: 2vh;
-        margin-top: 9vh;
-        
-    }
     div.container_list {
         display: grid;
         grid-template-columns: 1fr 1fr;
     
-    }
-    
-    img {
-        border-radius: 50px;
     }
   }
   
