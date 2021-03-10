@@ -2,6 +2,7 @@
 import React from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
+import styles from './ButtonAdd.module.css';
 
 export default function DisableElevation({
   typeButton,
@@ -9,7 +10,7 @@ export default function DisableElevation({
 }) {
   return (
     <ButtonGroup disableElevation variant="contained" color="white">
-      <Button type={typeButton} onClick={onClickBtn}> ➕ </Button>
+      <Button type={typeButton} onClick={onClickBtn} className={styles.button}> ➕ </Button>
     </ButtonGroup>
   );
 }
