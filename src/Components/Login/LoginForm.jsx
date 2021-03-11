@@ -24,6 +24,10 @@ const LoginForm = () => {
     direcion.push('/kitchen');
   };
 
+  const directAdministrative = () => {
+    direcion.push('/administrative');
+  };
+
   const handleAuth = () => {
     fetch('https://lab-api-bq.herokuapp.com/auth', {
       body: `email=${email}&password=${password}`,
@@ -44,6 +48,8 @@ const LoginForm = () => {
           directMenu();
         } else if (data.role === 'cooker') {
           directKitchen();
+        } else if (data.role === 'administrative') {
+          directAdministrative();
         }
       });
   };

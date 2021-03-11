@@ -1,3 +1,7 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
 /*Header*/
 .header {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -21,16 +25,16 @@
 
 }
 
-.container {
-  perspective: 400px;
-  width: 20%;
-  height: 190px;
-  
+.order{
+  padding: 10px;
+}
+
+
+.content_card {
+  display:flex;
 }
 
 .container_content div {
-  display: inline-table;
-  margin: 1vh;
 }
 .card:nth-child(3n) {
   margin-right: 0;
@@ -38,6 +42,7 @@
 
 .card:nth-child(3n+1) {
   margin-left: 0;
+  width: 110%;
 }
 
 .card_container p {
@@ -57,6 +62,10 @@
   border-radius: 10px;
   margin-top: 50px;
   margin-bottom: 50px;
+  margin-right: 20px;
+margin-left: 20px;
+list-style-type: none; 
+
 
 }
 
@@ -82,6 +91,7 @@
   border: 1px solid black;
   font-weight: bolder;
   width: 100px; 
+  margin: 0;
 }
 
 .btn:hover,
