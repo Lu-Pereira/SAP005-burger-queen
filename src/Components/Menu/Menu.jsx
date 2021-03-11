@@ -2,16 +2,15 @@
 /* eslint-disable no-nested-ternary *//* eslint-disable react/void-dom-elements-no-children */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-use-before-define */
-
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Button from '../Forms/Button';
 import Input from '../Forms/Input';
 import styles from './Menu.module.css';
 import ButtonAdd from '../Forms/ButtonAdd';
 import ButtonDelet from '../Forms/ButtonDelet';
-import Sair from '../../Assets/sair.svg';
-// import { USER_POST } from '../../Api';
+import Head from '../Helper/Head';
+import '../Global.css';
+import Header from '../Header/Header';
 
 export const Menu = () => {
   const token = localStorage.getItem('token');
@@ -25,7 +24,6 @@ export const Menu = () => {
   const [, setExcludeProduct] = useState([]);
   const [amount, setAmount] = useState([0]);
   const [productPrice, setProductPrice] = useState([0]);
-  /* const [name, setName] = useState(''); */
 
   useEffect(() => {
     fetch('https://lab-api-bq.herokuapp.com/products', {
@@ -119,35 +117,12 @@ export const Menu = () => {
         });
       })
       .catch((error) => console.log('error', error));
-
-    /* useEffect(() => {
-      USER_POST().then((result) => {
-        result.json().then((data) => {
-          console.log(data.name);
-          const userName = data.name;
-          setName(userName);
-        });
-      });
-    }); */
   };
 
   return (
     <div className={styles.container_menu}>
-      <header className={styles.header}>
-        <nav className={`${styles.nav} container`}>
-          <Link className="link-home" to="/">
-            <img src={Sair} />
-          </Link>
-          {'  '}
-          <Link className="link-Pedidos" to="/PedidosPronto">
-            Pedidos Prontos ✅
-          </Link>
-          {'  '}
-          <Link className="link-Pedidos" to="/historicoPedidos">
-            Histórico de Pedidos 📝
-          </Link>
-        </nav>
-      </header>
+      <Head title="🍔🍴 Menu" />
+      <Header />
       <div className={styles.containerButton}>
         <Button onClickBtn={() => setModal('Lanche')}>Lanches 🍔</Button>
         <Button onClickBtn={() => setModal('Café')}>Café da Manhã ☕</Button>
@@ -159,12 +134,12 @@ export const Menu = () => {
           <div className={styles.list}>
             <div className={styles.container_grid}>
               <div>
-                <h3>Café da manhã ☕</h3>
+                <h3 className={styles.titleOrder}>Café da manhã ☕</h3>
                 {cafeMenu.map((product) => (
                   <div className={styles.container}>
                     <div className={styles.card}>
                       <div className={styles.card_container}>
-                        <li key={product.id}>
+                        <li key={product.id} className={styles.order}>
                           <div className={styles.hamburgers_thumb}>
                             <h2>
                               {(product.name === 'Café americano') ? '☕'
@@ -189,13 +164,15 @@ export const Menu = () => {
           </div>
         ) : (modal === 'Lanche') ? (
           <div>
-            <h3>Hamburgueres</h3>
+            <h3 className={styles.titleOrder}>Hamburgueres</h3>
             {hamburgers.map((product) => (
               <div className={styles.container}>
                 <div className={styles.card}>
                   <div className={styles.card_container}>
-                    <li key={product.id}>
-                      <h1>🍔</h1>
+                    <li key={product.id} className={styles.order}>
+                      <div className={styles.hamburgers_thumb}>
+                        <h1 className={styles.icons}>🍔</h1>
+                      </div>
                       <p>
                         <b>{`${product.name}`}</b>
                       </p>
@@ -220,15 +197,17 @@ export const Menu = () => {
           </div>
         ) : (modal === 'Acompanhamento') ? (
           <div>
-            <h3>Acompanhamentos</h3>
+            <h3 className={styles.titleOrder}>Acompanhamentos</h3>
             {accompaniment.map((product) => (
               <div className={styles.container}>
                 <div className={styles.card}>
                   <div className={styles.card_container}>
-                    <li key={product.id}>
-                      <h1>
-                        {product.name === 'Batata frita' ? '🍟' : '🥨' }
-                      </h1>
+                    <li key={product.id} className={styles.order}>
+                      <div className={styles.hamburgers_thumb}>
+                        <h1 className={styles.icons}>
+                          {product.name === 'Batata frita' ? '🍟' : '🥨' }
+                        </h1>
+                      </div>
                       <p><b>{product.name}</b></p>
                       <p>
                         R$
@@ -243,19 +222,21 @@ export const Menu = () => {
           </div>
         ) : (
           <div>
-            <h3>Bebidas</h3>
+            <h3 className={styles.titleOrder}>Bebidas</h3>
             {drinks.map((product) => (
               <div className={styles.container}>
                 <div className={styles.card}>
                   <div className={styles.card_container}>
-                    <li key={product.id}>
-                      <h1>
-                        {(product.name === 'Água 500mL') ? '🥤'
-                          : (product.name === 'Água 750mL') ? '🥤'
-                            : (product.name === 'Refrigerante 500mL') ? '🥃'
-                              : '🥃'}
-                      </h1>
-                      <p>{product.name}</p>
+                    <li key={product.id} className={styles.order}>
+                      <div className={styles.hamburgers_thumb}>
+                        <h1 className={styles.icons}>
+                          {(product.name === 'Água 500mL') ? '🥤'
+                            : (product.name === 'Água 750mL') ? '🥤'
+                              : (product.name === 'Refrigerante 500mL') ? '🥃'
+                                : '🥃'}
+                        </h1>
+                      </div>
+                      <p><b>{product.name}</b></p>
                       <p>
                         R$
                         {product.price}
@@ -269,7 +250,7 @@ export const Menu = () => {
           </div>
         )}
 
-        <div className={styles.order}>
+        <div className={styles.orderList}>
           <header>
             <Input
               labelText="Nome:"
@@ -287,23 +268,28 @@ export const Menu = () => {
             <br />
           </header>
           <div>
-            <h3>Produtos adicionados:</h3>
+            <h3 className={styles.titleOrder}>Produtos adicionados:</h3>
             {orderItems.map((product) => (
               <div className={styles.container}>
                 <div className={styles.card}>
                   <div className={styles.card_container}>
-                    <li key={product.id}>
-                      <h1>
-                        {(product.name === 'Batata frita') ? '🍟'
-                          : (product.name === 'Anéis de cebola') ? '🥨'
-                            : (product.name === 'Água 500mL') ? '🥤'
-                              : (product.name === 'Água 750mL') ? '🥤'
-                                : (product.name === 'Refrigerante 500mL') ? '🥃'
-                                  : (product.name === 'Refrigerante 750mL') ? '🥃'
-                                    : (product.name === 'Hambúrger simples') ? '🍔'
-                                      : (product.name === 'Hambúrger duplo') ? '🍔'
-                                        : '🍔'}
-                      </h1>
+                    <li key={product.id} className={styles.order}>
+                      <div className={styles.hamburgers_thumb}>
+                        <h1 className={styles.icons}>
+                          {(product.name === 'Batata frita') ? '🍟'
+                            : (product.name === 'Anéis de cebola') ? '🥨'
+                              : (product.name === 'Água 500mL') ? '🥤'
+                                : (product.name === 'Água 750mL') ? '🥤'
+                                  : (product.name === 'Refrigerante 500mL') ? '🥃'
+                                    : (product.name === 'Refrigerante 750mL') ? '🥃'
+                                      : (product.name === 'Hambúrger simples') ? '🍔'
+                                        : (product.name === 'Hambúrger duplo') ? '🍔'
+                                          : (product.name === 'Café americano') ? '☕'
+                                            : (product.name === 'Café com leite') ? '☕ + 🥛'
+                                              : (product.name === 'Misto quente') ? '🥪'
+                                                : '🧃'}
+                        </h1>
+                      </div>
                       <p><b>{product.name}</b></p>
                       <p>
                         <b>
@@ -325,7 +311,7 @@ export const Menu = () => {
             ))}
 
             <div>
-              <h3>
+              <h3 className={styles.titleOrder}>
                 <b>
                   Total:  R$
                   {amount}

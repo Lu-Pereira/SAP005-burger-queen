@@ -4,6 +4,8 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Kitchen.module.css';
+import Head from '../Helper/Head';
+import Sair from '../../Assets/sair.svg';
 
 export const Kitchen = () => {
   const token = localStorage.getItem('token');
@@ -62,15 +64,23 @@ export const Kitchen = () => {
   return (
 
     <div>
-      <h1>Pedidos solicitados</h1>
+      <Head title="🍔 Cozinha" />
+      <header className={styles.header}>
+        <nav className={`${styles.nav} container`}>
+          <Link className={styles.link_home} to="/">
+            <img className={styles.img_home} src={Sair} alt="Icone para sair" />
+          </Link>
+          <h1 className={styles.title}>Pedidos solicitados 👨‍🍳🍔</h1>
+        </nav>
+      </header>
       <div className={styles.container_content}>
         {order && order
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((product, index) => (
-            <div className={styles.container}>
+            <div key={product.id} className={styles.container}>
               <div className={styles.card}>
                 <div className={styles.card_container}>
-                  <li key={product.id} className={styles.order}>
+                  <li className={styles.order}>
                     <p>
                       <b>
                         Comanda nº
@@ -92,7 +102,6 @@ export const Kitchen = () => {
                       </b>
                     </p>
                     <div className={styles.products}>
-
                       <div className={styles.orderMenu}>
                         {product.Products.map((item) => (
                           <>
@@ -103,7 +112,7 @@ export const Kitchen = () => {
                             </p>
                           </>
                         ))}
-                        <button type="submit" onClick={() => handleUpdateOrder(product)}>Pedidos Prontos</button>
+                        <button className={styles.btn} type="submit" onClick={() => handleUpdateOrder(product)}>Pedido Pronto</button>
                       </div>
                     </div>
                   </li>

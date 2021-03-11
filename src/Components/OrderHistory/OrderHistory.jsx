@@ -37,67 +37,68 @@ export const OrderHistory = () => {
 
   return (
     <div>
-      <h1>Historico de Pedidos</h1>
+      <h1 className={styles.title}>Historico de Pedidos</h1>
       <div>
         {order
-          && order.map((product, index) => {
-            const dataUpdated = new Date(product.updatedAt);
-            const dataCreated = new Date(product.createdAt);
-            const diferença = Math.abs(dataUpdated) - dataCreated;
-            const minutes = Math.floor(diferença / 1000 / 60);
-            return (
-              <div>
-                <div>
+          && order
+            .sort((a, b) => (a.id > b.id ? 1 : -1))
+            .map((product, index) => {
+              const dataUpdated = new Date(product.updatedAt);
+              const dataCreated = new Date(product.createdAt);
+              const diferença = Math.abs(dataUpdated) - dataCreated;
+              const minutes = Math.floor(diferença / 1000 / 60);
+              return (
+                <div key={product.id}>
                   <div>
-                    <li key={product.id}>
-                      <p>
-                        <b>
-                          Comanda nº
-                          {index}
-                        </b>
-                      </p>
-                      <p>
-                        Cliente:
-                        {product.client_name}
-                      </p>
-                      <p>
-                        Mesa:
-                        {product.table}
-                      </p>
-                      <p>
-                        <b>
-                          Status:
-                          {product.status}
-                        </b>
-                      </p>
-                      <p>
-                        Tempo:
-                        {minutes}
-                        {' '}
-                        min
-                        {' '}
-                      </p>
-                      <div>
-                        <div>
-                          <p>
-                            {product.Products.map((item) => (
-                              <>
-                                <p>{item.name}</p>
-                                <p>
-                                  Quantidade:
-                                  {item.qtd}
-                                </p>
-                              </>
-                            ))}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
+                    <div className={styles.container}>
+                      <li className={styles.card_container}>
+                        <p>
+                          <b>
+                            Comanda nº
+                            {index}
+                          </b>
+                        </p>
+                        <p>
+                          Cliente:
+                          {product.client_name}
+                        </p>
+                        <p>
+                          Mesa:
+                          {product.table}
+                        </p>
+                        <p>
+                          <b>
+                            Status:
+                            {product.status}
+                          </b>
+                        </p>
+                        <p>
+                          <b>
+                            Tempo de Preparo:
+                            {' '}
+                            {minutes}
+                            {' '}
+                            min
+                            {' '}
+                          </b>
+                        </p>
+                        <p>
+                          {product.Products.map((item) => (
+                            <>
+                              <p>{item.name}</p>
+                              <p>
+                                Quantidade:
+                                {item.qtd}
+                              </p>
+                            </>
+                          ))}
+                        </p>
+                      </li>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
       </div>
     </div>
   );

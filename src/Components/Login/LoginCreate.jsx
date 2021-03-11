@@ -48,17 +48,17 @@ const LoginCreate = () => {
 
   return (
     <section className="animeLeft">
-      <Head title="Crie sua conta" />
-      <h1 className={styles.title}>Cadastre-se</h1>
+      <Head title="📝 Cadastro" />
       <form className={styles.forms} onSubmit={handleSubmit}>
+        <h1 className={styles.title}>Cadastre-se 📝</h1>
         <Input
-          labelText="Usuário"
+          labelText="Usuário 👤"
           typeInput="text"
           nameInput="username"
           onChangeInput={(e) => registrationData({ ...signIn, name: e.target.value })}
         />
         <Input
-          labelText="Email"
+          labelText="📧 E-mail"
           typeInput="email"
           nameInput="email"
           onChangeInput={(e) => registrationData({ ...signIn, email: e.target.value })}

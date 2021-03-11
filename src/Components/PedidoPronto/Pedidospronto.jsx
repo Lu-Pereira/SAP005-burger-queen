@@ -1,9 +1,13 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable max-len *//* eslint-disable no-unused-vars */
+/* eslint-disable import/no-self-import *//* eslint-disable linebreak-style */
 /* eslint-disable-next-line linebreak-style *//* eslint-disable react/button-has-type */
-/* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 import React, { useCallback, useEffect, useState } from 'react';
-// import styles from "./PedidosProntos.module.css";
+import { Link } from 'react-router-dom';
+import Head from '../Helper/Head';
+import Sair from '../../Assets/sair.svg';
+import styles from './Pedidospronto.module.css';
 
 export const Pedidos = () => {
   const token = localStorage.getItem('token');
@@ -61,6 +65,22 @@ export const Pedidos = () => {
 
   return (
     <div>
+      <Head title="✅ Pedidos Prontos" />
+      <header className={styles.header}>
+        <nav className={`${styles.nav} container`}>
+          <Link className={styles.link_home} to="/">
+            <img className={styles.img_home} src={Sair} alt="Icone para sair" />
+          </Link>
+          {'  '}
+          <Link className={styles.link_Pedidos} to="/menu">
+            Menu 🍔🍴
+          </Link>
+          {'  '}
+          <Link className={styles.link_Pedidos} to="/historicoPedidos">
+            Histórico de Pedidos 📝
+          </Link>
+        </nav>
+      </header>
       <h1>Pedidos Finalizados</h1>
       <div>
         {order
@@ -70,10 +90,10 @@ export const Pedidos = () => {
             const diferença = Math.abs(dataUpdated) - dataCreated;
             const minutes = Math.floor(diferença / 1000 / 60);
             return (
-              <div>
-                <div>
-                  <div>
-                    <li key={product.id}>
+              <div key={product.id} className={styles.container}>
+                <div className={styles.card}>
+                  <div className={styles.card_container}>
+                    <li className={styles.order}>
                       <p>
                         <b>
                           Comanda nº
@@ -101,11 +121,8 @@ export const Pedidos = () => {
                         min
                         {' '}
                       </p>
-                      <div>
-                        <div>
-                          <button onClick={() => handleUpdateOrder(product)}>
-                            Pedido entregue
-                          </button>
+                      <div className={styles.products}>
+                        <div lassName={styles.orderMenu}>
                           <p>
                             {product.Products.map((item) => (
                               <>
@@ -116,6 +133,9 @@ export const Pedidos = () => {
                                 </p>
                               </>
                             ))}
+                            <button className={styles.btn} onClick={() => handleUpdateOrder(product)}>
+                              Pedido entregue
+                            </button>
                           </p>
                         </div>
                       </div>

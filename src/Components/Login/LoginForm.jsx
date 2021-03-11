@@ -50,7 +50,7 @@ const LoginForm = () => {
 
   return (
     <section className="animeLeft">
-      <Head title="Login" />
+      <Head title="🍔🎮 Login" />
       <form className={styles.form}>
         <h1 className={styles.title}>Login</h1>
         <Input
