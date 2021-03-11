@@ -1,0 +1,11 @@
+.container {
+    display: inline flow-root list-item;
+}
+
+.card_container {
+    background-color: #e45412;
+    list-style-type: none; 
+    border: 2px solid black;
+    margin: 35px;
+    padding: 0px;
+}
