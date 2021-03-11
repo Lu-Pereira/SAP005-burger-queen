@@ -48,9 +48,9 @@ const LoginCreate = () => {
 
   return (
     <section className="animeLeft">
-      <Head title="📝 Cadastro" />
+      <Head title="Cadastro" />
       <form className={styles.forms} onSubmit={handleSubmit}>
-        <h1 className={styles.title}>Cadastre-se 📝</h1>
+        <h1 className={styles.title}>Cadastre-se</h1>
         <Input
           labelText="Usuário 👤"
           typeInput="text"

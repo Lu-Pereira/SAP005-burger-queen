@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars *//* eslint-disable linebreak-style */
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState, useCallback, useRef, useEffect,
+} from 'react';
+import { Link } from 'react-router-dom';
 import ButtonDelet from '../Forms/ButtonDelet';
 import styles from './Administrative.module.css';
+import Head from '../Helper/Head';
+import Sair from '../../Assets/sair.svg';
 
 const Administrative = () => {
   const token = localStorage.getItem('token');
-  const [userItems, setUserItems] = useState([]);
-  const [user, setUser] = useState([]);
+  const userItems = useRef(false);
+  const [user, setUser] = useState('');
 
   const handleGetUser = useCallback(async () => {
     fetch('https://lab-api-bq.herokuapp.com/users', {
@@ -57,6 +62,22 @@ const Administrative = () => {
   };
   return (
     <div>
+      <Head title="💼 Administrativo" />
+      <header className={styles.header}>
+        <nav className={`${styles.nav} container`}>
+          <Link className={styles.link_home} to="/">
+            <img className={styles.img_home} src={Sair} alt="Icone para sair" />
+          </Link>
+          {'  '}
+          <Link className={styles.link_Pedidos} to="/PedidosPronto">
+            Pedidos Prontos ✅
+          </Link>
+          {'  '}
+          <Link className={styles.link_Pedidos} to="/historicoPedidos">
+            Histórico de Pedidos 📝
+          </Link>
+        </nav>
+      </header>
       <h1>Usuarios Cadastrados</h1>
       <div>
         {user

@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import React, { useCallback, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './OrderHistory.module.css';
+import Head from '../Helper/Head';
+import Sair from '../../Assets/sair.svg';
 
 export const OrderHistory = () => {
   const token = localStorage.getItem('token');
@@ -37,8 +40,24 @@ export const OrderHistory = () => {
 
   return (
     <div>
+      <Head title="📝 Historico do Pedido" />
+      <header className={styles.header}>
+        <nav className={`${styles.nav} container`}>
+          <Link className={styles.link_home} to="/">
+            <img className={styles.img_home} src={Sair} alt="Icone para sair" />
+          </Link>
+          {'  '}
+          <Link className={styles.link_Pedidos} to="/menu">
+            Menu 🍔🍴
+          </Link>
+          {'  '}
+          <Link className={styles.link_Pedidos} to="/historicoPedidos">
+            Histórico de Pedidos 📝
+          </Link>
+        </nav>
+      </header>
       <h1 className={styles.title}>Historico de Pedidos</h1>
-      <div>
+      <div className={styles.content}>
         {order
           && order
             .sort((a, b) => (a.id > b.id ? 1 : -1))

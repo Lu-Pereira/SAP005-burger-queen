@@ -64,7 +64,7 @@ export const Pedidos = () => {
   };
 
   return (
-    <div>
+    <div className={styles.content}>
       <Head title="✅ Pedidos Prontos" />
       <header className={styles.header}>
         <nav className={`${styles.nav} container`}>
@@ -82,7 +82,7 @@ export const Pedidos = () => {
         </nav>
       </header>
       <h1>Pedidos Finalizados</h1>
-      <div>
+      <div className={styles.content_card}>
         {order
           && order.map((product, index) => {
             const dataUpdated = new Date(product.updatedAt);
@@ -92,55 +92,51 @@ export const Pedidos = () => {
             return (
               <div key={product.id} className={styles.container}>
                 <div className={styles.card}>
-                  <div className={styles.card_container}>
-                    <li className={styles.order}>
+                  <li className={styles.order}>
+                    <p>
+                      <b>
+                        Comanda nº
+                        {index}
+                      </b>
+                    </p>
+                    <p>
+                      Cliente:
+                      {product.client_name}
+                    </p>
+                    <p>
+                      Mesa:
+                      {product.table}
+                    </p>
+                    <p>
+                      <b>
+                        Status:
+                        {product.status}
+                      </b>
+                    </p>
+                    <p>
+                      Tempo:
+                      {minutes}
+                      {' '}
+                      min
+                      {' '}
+                    </p>
+                    <div lassName={styles.orderMenu}>
                       <p>
-                        <b>
-                          Comanda nº
-                          {index}
-                        </b>
+                        {product.Products.map((item) => (
+                          <>
+                            <p>{item.name}</p>
+                            <p>
+                              Quantidade:
+                              {item.qtd}
+                            </p>
+                          </>
+                        ))}
+                        <button className={styles.btn} onClick={() => handleUpdateOrder(product)}>
+                          Pedido entregue
+                        </button>
                       </p>
-                      <p>
-                        Cliente:
-                        {product.client_name}
-                      </p>
-                      <p>
-                        Mesa:
-                        {product.table}
-                      </p>
-                      <p>
-                        <b>
-                          Status:
-                          {product.status}
-                        </b>
-                      </p>
-                      <p>
-                        Tempo:
-                        {minutes}
-                        {' '}
-                        min
-                        {' '}
-                      </p>
-                      <div className={styles.products}>
-                        <div lassName={styles.orderMenu}>
-                          <p>
-                            {product.Products.map((item) => (
-                              <>
-                                <p>{item.name}</p>
-                                <p>
-                                  Quantidade:
-                                  {item.qtd}
-                                </p>
-                              </>
-                            ))}
-                            <button className={styles.btn} onClick={() => handleUpdateOrder(product)}>
-                              Pedido entregue
-                            </button>
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </div>
+                    </div>
+                  </li>
                 </div>
               </div>
             );
