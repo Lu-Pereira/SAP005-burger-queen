@@ -1,8 +1,8 @@
 body {
     font-family: "Raleway",Sans-serif;
-    background-image: url('../../Assets/fundoDeTela.jpeg');
+    background-image: url('../../Assets/Tela.jpeg');
     background-repeat: repeat;
-    background-size: 768px 520px;
+      background-size: 1350px 950px;
     margin: 0;
     padding: 0;
 }

@@ -1,3 +1,7 @@
+body{
+  background-image: url('../../Assets/Tela.jpeg');
+  background-size: 1350px 950px;
+}
 
 .form{
   width: 400px;
@@ -66,7 +70,7 @@ div.register p{
     margin-left: 167px;
     padding: 1rem 1rem;
     border-radius: 0.5rem;
-    height: 400px;
+    height: 430px;
     margin-bottom: 50px;
   }
 
@@ -94,4 +98,22 @@ div.register p{
     text-align: center;
     color: white;
   }
+}
+
+@media (max-width: 768px){
+body{
+  background-size: 768px 1024px;
+  background-repeat: no-repeat;
+}
+.form{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e45412;
+  margin-left: 167px;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  height: 430px;
+  margin-bottom: 50px;
+}
 }
