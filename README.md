@@ -26,7 +26,7 @@ O Burger Game é uma aplicação criada para um pequeno restaurante de hambúrgu
 - Permite que o garçom veja quanto tempo o pedido demorou para ser feito.
 - Permite que o garçom marque o pedido como entregue.
 
-Para acessar [clique aqui](burger-game.netlify.app/)
+Para acessar [clique aqui](https://burger-game.netlify.app/)
 
 ![paginaweb](BurgerGame.gif)
 
