@@ -1,5 +1,7 @@
 # Burger Game :hamburger::fries:🎮
 
+![logo](https://user-images.githubusercontent.com/37550557/114104748-d96eb580-98a1-11eb-8a76-02cba33fe758.jpeg)
+
 
 ## :page_facing_up: Índice
 
