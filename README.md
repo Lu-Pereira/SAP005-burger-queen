@@ -29,6 +29,7 @@ O Burger Game é uma aplicação criada para um pequeno restaurante de hambúrgu
 
 Para acessar [clique aqui](https://burger-game.netlify.app/)
 
+
 ![paginaweb](BurgerGame.gif)
 
 ## 2. :writing_hand: Histórias de Usuário
